@@ -15,10 +15,11 @@ Khi số lượng bài viết nhiều hơn 12 bài thì sẽ hiện ra Trang 1, 
     Tên, Số điện thoại, Email, Nội dung tìm kiếm
     Thông tin gửi về email  phuonghoang1710@gmail.com
                                Pass:  ph1705829900  - new: phuong1705829900
+=> OK
 
      
 5. Tạo hộp chát liên hệ với nick  Zalo 0936 399 755.   
-Cái này tôi tìm hiểu thì chưa có hỗ trợ link chat zalo trên web nhé.
+=> Cái này tôi tìm hiểu thì chưa có hỗ trợ link chat zalo trên web nhé.
 
  
 6. Tạo hộp chát ( tôi thấy có uchat nhưng chưa hiểu là chat kiểu gì, ông xem và tư vấn giúp tôi)
@@ -32,6 +33,12 @@ Cái này tôi tìm hiểu thì chưa có hỗ trợ link chat zalo trên web nh
 9. Phần trả lời trong từng bài viết, Khi khách gửi phản hồi thì gửi vể email 
 phuonghoang1710@gmail.com    ( Hiện tại t thử thì nhận phản hồi này về web. cái này có thay đổi về email được ko)
 
+=> Đã sửa để gửi mail về phuonghoang1710@gmail.com khi có phản hồi rồi nhé.
+
 
 10. Tôi thấy phần Cập nhật web.... cái này tôi ko hiểu lắm, ông xem có cập nhật được ko, vì nó còn liên quan đến wordpress..... tôi ko hiểu lắm
+=> OK
+
+
+11. Chỉnh sửa phần bài viết hiển thị theo danh mục
 => OK

@@ -15,6 +15,10 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <div id="side-bar">
 		<div class="sidebar-box">
+        	<h1 class="h1-title">Đăng ký nhận thông tin dự án</h1>
+        	<a href="<?php echo site_url(); ?>/dang-ky-nhan-thong-tin-du-an/"><img class="dangkyngay-img" src="<?php echo site_url(); ?>/wp-content/themes/chungcuxanh/images/dang-ky-tu-van-truc-tiep.gif" alt="" /></a>
+        </div>
+		<div class="sidebar-box">
         	<?php dynamic_sidebar( 'sidebar-1' ); ?>
         </div>
         <div class="sidebar-box">
