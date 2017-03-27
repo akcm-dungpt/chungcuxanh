@@ -22,6 +22,7 @@ get_header(); ?>
             </header><!-- .page-header -->
             <?php
             $id_Category = the_category_ID($echo=false);
+            if ($id_Category) {
             $posts_array = get_posts( array(category=>$id_Category, numberposts=>'100') );
             foreach ( $posts_array as $post ) : setup_postdata( $post ); ?>
                 <div id="box1" class="col">
@@ -33,7 +34,8 @@ get_header(); ?>
 						</a>
 					</h2>
                 </div>
-            <?php endforeach; ?>
+            <?php endforeach; 
+            }?>
         </div>
     </div><!-- #primary -->
     <?php get_sidebar();?>
