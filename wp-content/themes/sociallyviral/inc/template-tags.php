@@ -36,11 +36,11 @@ function sociallyviral_post_navigation() {
 			<h2 class="screen-reader-text"><?php _e( 'Posts navigation', 'sociallyviral' ); ?></h2>
 			<div class="pagination nav-links">
 				<?php if ( get_next_posts_link() ) : ?>
-					<div class="nav-previous"><?php next_posts_link( __( '<i class="demo-icon icon-angle-double-left"></i> Previous', 'sociallyviral' ) ); ?></div>
+					<div class="nav-next"><?php next_posts_link( __( 'Next <i class="demo-icon icon-angle-double-right"></i>', 'sociallyviral' ) ); ?></div>
 				<?php endif; ?>
 
 				<?php if ( get_previous_posts_link() ) : ?>
-					<div class="nav-next"><?php previous_posts_link( __( 'Next <i class="demo-icon icon-angle-double-right"></i>', 'sociallyviral' ) ); ?></div>
+					<div class="nav-previous"><?php previous_posts_link( __( '<i class="demo-icon icon-angle-double-left"></i> Previous', 'sociallyviral' ) ); ?></div>
 				<?php endif; ?>
 			</div>
 		<?php } ?>

@@ -3,8 +3,8 @@ Theme Name: SociallyViral
 Theme URI: http://mythemeshop.com/themes/sociallyviral-free/
 Author: MyThemeShop
 Author URI: https://mythemeshop.com
-Description: SociallyViral is an engaging WordPress theme that is designed to help boost social shares and get you more viral traffic from the web\'s top social media websites.
-Version: 1.0.8
+Description: SociallyViral is an engaging WordPress theme that is designed to help boost social shares and get you more viral traffic from top social media websites. =====> DEMO ====>>>> http://demo.mythemeshop.com/s/?theme=SociallyViral%20Free
+Version: 1.0.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: yellow, light, orange, blue, fluid-layout, responsive-layout, right-sidebar, custom-background, custom-header, custom-menu, featured-images, theme-options, threaded-comments, translation-ready, two-columns, one-column
@@ -417,14 +417,9 @@ h1.big { font-size: 100px }
 .main-container { width: 100%; max-width: 1170px; margin: 0 auto; clear: both; display: block; padding: 0; }
 .container { max-width: 1170px; margin: 0 auto; }
 /*-[header]-----------------------------------*/
-#masthead { 
-    background: #FFF; 
-    -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); 
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); text-align: center; margin-bottom: 40px; }
+#masthead { background: #FFF; -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); text-align: center; margin-bottom: 40px; }
 .single #masthead, .page-template-default #masthead, .page-template-page-blog #masthead { margin-bottom: 0 }
-.site-branding {
-    
-}
+.site-branding { margin: 0 0 0 25px; overflow: hidden; float: left; display: inline-block; }
 #logo { float: left; display: inline-block; line-height: 1; position: relative; margin-bottom: 25px; margin-top: 29px; }
 #logo a { float: left; line-height: 1; }
 #logo.text-logo { margin: 32px 0; font-size: 2em; }
@@ -533,8 +528,8 @@ a.toplink i { line-height: 15px }
       .primary-navigation ul .sfHover a, .primary-navigation ul li:hover, .primary-navigation ul .sfHover ul li { background: transparent }
       .primary-navigation#navigation ul ul.toggle-submenu { position: static; width: 100%; border-top: 0; box-shadow: none; }
       /*-[ Responsive Navigation ]--------------------------------*/
-      .main-container { position: relative; left: 0; transition: left 500ms ease; }
-      .mobile-menu-active .main-container { left: 300px; transition: left 500ms ease; }
+      .main-container,.site-footer { position: relative; left: 0; transition: left 500ms ease; }
+      .mobile-menu-active .main-container,.mobile-menu-active .site-footer { left: 300px; transition: left 500ms ease; }
       .primary-navigation.mobile-menu-wrapper { display: block; position: fixed; top: 0; left: -300px; width: 300px; height: 100%; border-right: 1px solid rgba(0, 0, 0, 0.2); overflow: auto; transition: left 500ms ease; -webkit-backface-visibility: hidden; }
       .mobile-menu-active .primary-navigation.mobile-menu-wrapper { left: 0 }
       .primary-navigation ul li { width: 100%; display: block; }

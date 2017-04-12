@@ -1270,7 +1270,7 @@ jQuery(document).ready(function($) {
 
             // Prepare the received data.
             $plugin = wp_parse_args( $plugin, $defaults );
-
+            
             if ( ! empty( $plugin['alt'] ) ) {
                 $args = array_merge( $plugin, array(
                     'name' => $plugin['alt_name'],
@@ -1279,6 +1279,7 @@ jQuery(document).ready(function($) {
                     'alt' => '',
                     'free' => $this->sanitize_key( $plugin['slug'] ),
                     'source_type' => 'external',
+                    'source' => __( 'MyThemeShop', 'sociallyviral' ),
                     'external_url' => $plugin['info_link'],
                     'description' => $plugin['alt_description'],
                 ) );
@@ -1675,6 +1676,9 @@ jQuery(document).ready(function($) {
          * @return bool True if complete, i.e. no outstanding actions. False otherwise.
          */
         public function is_tgmpa_complete() {
+            
+            return false; // we will just return false to prevent the page from disappearing
+            
             $complete = true;
             foreach ( $this->plugins as $slug => $plugin ) {
                 if ( ! $this->is_plugin_active( $slug ) || false !== $this->does_plugin_have_update( $slug ) ) {
@@ -2393,7 +2397,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
             );
         }
 
-        /*public function column_description( $item )
+        public function column_description( $item )
         {
             $plugins     = $this->tgmpa->get_plugins();
             $trimmed     = trim( $item['sanitized_plugin'] );
@@ -2409,7 +2413,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
                 }
             }
             if ( empty( $description ) ) {
-                $plugin = @json_decode( @file_get_contents( 'https://api.wordpress.org/plugins/info/1.0/' . $item['slug'] . '.json' ), true );
+                $plugin = @json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://api.wordpress.org/plugins/info/1.0/' . $item['slug'] . '.json' ) ), true );
                 if ( ! empty( $plugin['short_description'] ) ) {
                     $description = $plugin['short_description'];
                 }
@@ -2428,7 +2432,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
             }
 
             return $description;
-        }*/
+        }
 
         /**
          * Create version information column.
@@ -3704,25 +3708,17 @@ function mts_register_required_plugins() {
     $plugins = array(
 
         array(
-            'name'      => 'MyThemeShop Theme/Plugin Updater ',
-            'slug'      => 'mythemeshop-connect',
+            'name'      => 'WP Shortcode ',
+            'slug'      => 'wp-shortcode',
             'required'  => false,
+            'tab'       => 'both'
         ),
 
         array(
-            'name'      => 'My WP Translate ',
-            'slug'      => 'my-wp-translate',
+            'name'      => 'WP Tab Widget ',
+            'slug'      => 'wp-tab-widget',
             'required'  => false,
-        ),
-
-        array(
-            'name'      => 'My WP Backup ',
-            'slug'      => 'my-wp-backup',
-            'alt'       => 'my-wp-backup-pro',
-            'alt_name'  => 'My WP Backup Pro ',
-            'alt_description' => __( 'My WP Backup Pro is the best way to protect your data and website in the event of adverse server events, data corruption, hacking and more. With the option to schedule backups and have them delivered via email, Amazon S3, and lots of other features, you can sleep easy knowing you\'re protected.', 'sociallyviral' ),
-            'info_link' => 'https://mythemeshop.com/plugins/my-wp-backup-pro/',
-            'required'  => false,
+            'tab'       => 'both'
         ),
 
         array(
@@ -3733,6 +3729,7 @@ function mts_register_required_plugins() {
             'alt_description' => __( 'Create reviews! Choose from Stars, Percentages, Circles or Points for review scores. Supports Retina Display, WPMU & Unlimited Color Schemes.', 'sociallyviral' ),
             'info_link' => 'https://mythemeshop.com/plugins/wp-review-pro/',
             'required'  => false,
+            'tab'       => 'both'
         ),
 
         array(
@@ -3743,6 +3740,18 @@ function mts_register_required_plugins() {
             'alt_description' => __( 'These days, having an email subscriber list is key to running a successful blog, so we created WP Subscribe Pro. Boost your conversions of traffic to subscribers, and generate more residual traffic and earnings. WP Subscribe Pro supports Feedburner, MailChimp and Aweber and is a must-have plugin for any blog.', 'sociallyviral' ),
             'info_link' => 'https://mythemeshop.com/plugins/wp-subscribe-pro/',
             'required'  => false,
+            'tab'       => 'recommended'
+        ),
+
+        array(
+            'name'      => 'WP Notification Bars ',
+            'slug'      => 'wp-notification-bars',
+            'alt'       => 'mts-wp-notification-bar',
+            'alt_name'  => 'WP Notification Bar',
+            'alt_description' => __( 'WP Notification Bar is a custom notification and alert bar plugin for WordPress which is perfect for marketing promotions, alerts, increasing click throughs to other pages and so much more.', 'sociallyviral' ),
+            'info_link' => 'https://mythemeshop.com/plugins/wp-notification-bar/',
+            'required'  => false,
+            'tab'       => 'recommended'
         ),
 
         array(
@@ -3752,19 +3761,54 @@ function mts_register_required_plugins() {
             'info_link' => 'https://mythemeshop.com/plugins/wp-mega-menu/',
             'required'  => false,
             'pro'       => true,
+            'tab'       => 'recommended'
             //'force_activation'   => true
         ),
 
         array(
-            'name'      => 'WP Shortcode ',
-            'slug'      => 'wp-shortcode',
+            'name'      => 'My WP Translate ',
+            'slug'      => 'my-wp-translate',
             'required'  => false,
+            'tab'       => 'recommended'
         ),
 
         array(
-            'name'      => 'WP Tab Widget ',
-            'slug'      => 'wp-tab-widget',
+            'name'      => 'My WP Backup ',
+            'slug'      => 'my-wp-backup',
+            'alt'       => 'my-wp-backup-pro',
+            'alt_name'  => 'My WP Backup Pro ',
+            'alt_description' => __( 'My WP Backup Pro is the best way to protect your data and website in the event of adverse server events, data corruption, hacking and more. With the option to schedule backups and have them delivered via email, Amazon S3, and lots of other features, you can sleep easy knowing you\'re protected.', 'sociallyviral' ),
+            'info_link' => 'https://mythemeshop.com/plugins/my-wp-backup-pro/',
             'required'  => false,
+            'tab'       => 'recommended'
+        ),
+
+        array(
+            'name'      => 'Launcher: Coming Soon & Maintenance Mode ',
+            'slug'      => 'launcher',
+            'required'  => false,
+            'tab'       => 'recommended'
+        ),
+
+        array(
+            'name'      => 'OTF Regenerate Thumbnails ',
+            'slug'      => 'otf-regenerate-thumbnails',
+            'required'  => false,
+            'tab'       => 'recommended'
+        ),
+        
+        array(
+            'name'      => 'W3 Total Cache ',
+            'slug'      => 'w3-total-cache',
+            'required'  => false,
+            'tab'       => 'recommended'
+        ),
+        
+        array(
+            'name'      => 'Yoast SEO ',
+            'slug'      => 'wordpress-seo',
+            'required'  => false,
+            'tab'       => 'recommended'
         ),
 
     );
@@ -3787,6 +3831,7 @@ function mts_register_required_plugins() {
     $config = array(
         'id'           => 'mts-plugins',                 // Unique ID for hashing notices for multiple instances of TGMPA.
         'default_path' => '',                      // Default absolute path to pre-packaged plugins.
+        'parent_slug'  => 'admin.php', // No parent
         'menu'         => 'mts-install-plugins', // Menu slug.
         'has_notices'  => false,                    // Show admin notices or not.
         'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
@@ -3834,10 +3879,48 @@ function mts_tgmpba_table_data_item( $item, $plugin ) {
     if ( ! empty( $plugin['info_link'] ) ) {
         $item['info_link'] = $plugin['info_link'];
     }
+    if ( ! empty( $plugin['tab'] ) ) {
+        $item['tab'] = $plugin['tab'];
+    }
     return $item;
 }
 add_filter( 'tgmpa_table_data_item', 'mts_tgmpba_table_data_item', 10, 2 );
 
+/**
+ * Show correct plugins on Essential tab
+ * @param  array $item
+ *
+ * @return array
+ */
+function mts_essential_tab_plugins( $items ) {
+    
+    if ( ! isset( $_GET['ptab'] ) || $_GET['ptab'] === 'essential' ) {
+        $essential = array();
+        foreach ( $items as $key => $pl ) {
+            if ( 'recommended' !== $pl['tab'] && ! isset( $pl['available_separately'] ) ) $essential[] = $pl;
+        }
+        $items = $essential;
+    }
+    return $items;
+}
+add_filter( 'tgmpa_table_data_items', 'mts_essential_tab_plugins' );
+
+
+/**
+ * Add "Install Plugins" parent menu item which links to tgmpa install plugins page
+function mts_addons_add_admin_menu_item() {
+    add_menu_page(
+        __('Install Plugins', 'sociallyviral' ),
+        __('Install Plugins', 'sociallyviral' ),
+        'manage_options',
+        'mts-install-plugins', // the same page as 'menu' in tgmpa
+        null, // no callback, it is just a link to other menu page
+        'dashicons-admin-generic',
+        3
+    );
+}
+add_action( 'admin_menu', 'mts_addons_add_admin_menu_item' );
+*/
 
 /**
  * Change the callback function for tgmpa "Install Plugins" menu item
@@ -3869,8 +3952,8 @@ add_action( 'admin_init', 'mts_addons_theme_activation_redirect' );
  */
 function mts_enqueue_addons_scripts( $hook ) {
     if ( strpos( $hook, 'mts-install-plugins' ) != false) {
-        wp_enqueue_style( 'mts-addons', get_template_directory_uri() . '/css/addons.css', null, '1.0.8' );
-        wp_enqueue_script( 'mts-addons', get_template_directory_uri() . '/js/addons.js', array('jquery'), '1.0.8', true );
+        wp_enqueue_style( 'mts-addons', get_template_directory_uri() . '/css/addons.css', NULL, MTS_THEME_VERSION );
+        wp_enqueue_script( 'mts-addons', get_template_directory_uri() . '/js/addons.js', array('jquery'), MTS_THEME_VERSION, true );
     }
 }
 add_action( 'admin_enqueue_scripts', 'mts_enqueue_addons_scripts' );
@@ -3893,8 +3976,45 @@ function mts_addons_page() {
 
     // Force refresh of available plugin information so we'll know about manual updates/deletes.
     wp_clean_plugins_cache( false );
+
+    $tab = isset( $_GET['ptab'] ) ? $_GET['ptab'] : 'essential';
+
+    $essential_url = add_query_arg(
+        array(
+            'page' => urlencode( 'mts-install-plugins' ),
+            'ptab' => urlencode( 'essential' ),
+        ),
+        self_admin_url( 'admin.php' )
+    );
+
+    $recommended_url = add_query_arg(
+        array(
+            'page' => urlencode( 'mts-install-plugins' ),
+            'ptab' => urlencode( 'recommended' ),
+        ),
+        self_admin_url( 'admin.php' )
+    );
+
     ?>
-    <div class="tgmpa wrap"><h2></h2>
+    <div class="mts-addons-tabs-wrap">
+        <ul class="mts-addons-tabs">
+            <li class="mts-addons-tabs-li<?php if( 'essential' == $tab ) echo' active'; ?>">
+                <a href="<?php echo esc_url( $essential_url ); ?>" class="mts-addons-tabs-link">
+                    <?php _e( 'Essential', 'sociallyviral' ) ?>
+                </a>
+            </li>
+            <li class="mts-addons-tabs-li<?php if( 'recommended' == $tab ) echo' active'; ?>">
+                <a href="<?php echo esc_url( $recommended_url ); ?>" class="mts-addons-tabs-link">
+                    <?php _e( 'Recommended', 'sociallyviral' ) ?>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <?php
+
+    if ( 'recommended' === $tab ) {
+    ?>
+    <div class="tgmpa wrap">
         <?php
         $plugin_table->prepare_items();
         if ( ! empty( $tgma_instance->message ) && is_string( $tgma_instance->message ) ) {
@@ -3909,10 +4029,11 @@ function mts_addons_page() {
                 <?php
                 $current_theme = wp_get_theme();
                 $theme_name = $current_theme->get( 'Name' );
+                $theme_uri  = $current_theme->get( 'ThemeURI' );
                 ?>
                 <header class="mts-addons-header">
                     <h2><?php _e( 'Recommended Plugins', 'sociallyviral' ); ?></h2>
-                    <p><?php printf( __( 'MyThemeShop and third party plugins recommended for %s theme!', 'sociallyviral' ), '<strong>'.$theme_name.'</strong>' ); ?></p>
+                    <p><?php printf( __( 'MyThemeShop and third party plugins recommended for %s theme!', 'sociallyviral' ), '<a href="'.esc_url( $theme_uri ).'"><strong>'.$theme_name.'</strong></a>' ); ?></p>
                 </header>
 
                 
@@ -4029,8 +4150,8 @@ function mts_addons_page() {
 
                         $description = isset( $plugin['alt_description'] ) ? $plugin['alt_description'] : '';
                         $description = isset( $plugin['description'] ) ? $plugin['description'] : $description;
-                        $image_src   = isset( $plugin['image'] ) && !empty( $plugin['image'] ) ? $plugin['image'] : get_template_directory_uri().'/images/plugin-no-thumb.png';
-                        $author      = isset( $plugin['author'] ) ? $plugin['author'] : 'MyThemeShop';
+                        $image_src   = isset( $plugin['image'] ) && !empty( $plugin['image'] ) ? $plugin['image'] : get_template_directory_uri().'/images/apple-touch-icon.png';
+                        $author      = isset( $plugin['author'] ) ? $plugin['author'] : '<a href="https://mythemeshop.com">MyThemeShop</a>';
 
                         $args = array(
                             'slug' => $plugin['slug'],
@@ -4054,6 +4175,7 @@ function mts_addons_page() {
                                 $image_src = $info['icons']['default'];
                             }
                             $description = isset( $info['short_description'] ) ? $info['short_description'] : $description;
+                            $author      = isset( $info['author'] ) ? $info['author'] : '<a href="https://mythemeshop.com">MyThemeShop</a>';
                         }
                         ?>
                         <li class="mts-addon visible <?php echo $status; ?>" id="<?php echo $plugin['slug']; ?>">
@@ -4088,6 +4210,33 @@ function mts_addons_page() {
         </form>
     </div>
 <?php
+    } else {
+        include( ABSPATH . 'wp-admin/includes/plugin-install.php' );
+
+        $tgma_instance = TGM_Plugin_Activation::$instance;
+        ?>
+        <div class="tgmpa wrap">
+            
+            <?php $plugin_table->prepare_items(); ?>
+
+            <?php
+            if ( ! empty( $tgma_instance->message ) && is_string( $tgma_instance->message ) ) {
+                echo wp_kses_post( $tgma_instance->message );
+            }
+            ?>
+            <header class="mts-addons-header">
+                <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+                <?php //$plugin_table->views(); ?>
+            </header>
+
+            <form id="tgmpa-plugins" action="" method="post">
+                <input type="hidden" name="tgmpa-page" value="<?php echo esc_attr( $tgma_instance->menu ); ?>" />
+                <input type="hidden" name="plugin_status" value="<?php echo esc_attr( $plugin_table->view_context ); ?>" />
+                <?php $plugin_table->display(); ?>
+            </form>
+        </div>
+        <?php
+    }
 }
 
 /**

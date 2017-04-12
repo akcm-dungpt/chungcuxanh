@@ -1,6 +1,6 @@
 /*
  * Theme Name: SociallyViral
-*/
+ */
 
 /*----------------------------------------------------
 /* Responsive Navigation
@@ -113,7 +113,7 @@ jQuery(document).ready(function($) {
 /* Back to top smooth scrolling
 /*--------------------------------------------------*/
 jQuery(document).ready(function($) {
-    jQuery('a[href=#blog]').click(function(){
+    jQuery('.toplink').click(function(){
         jQuery('html, body').animate({scrollTop:0}, 'slow');
         return false;
     });
