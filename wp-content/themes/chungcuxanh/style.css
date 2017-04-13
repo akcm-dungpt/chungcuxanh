@@ -243,7 +243,7 @@ a#pull { display: none }
 .primary-navigation#navigation ul ul ul { left: 265px; top: -1px; }
 .site-main .comment-navigation, .site-main .posts-navigation, .site-main .post-navigation { margin: 0 0 25px; float: left; }
 .pagination ul { list-style-type: none; padding: 0; margin: 0; }
-.nav-next a, .nav-previous a, .pagination a, .pagination .current { float: left; padding: 15px 15px; background: #FFF; -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); line-height: 1; font-size: 18px; text-transform: uppercase; min-width: 48px; text-align: center; margin-bottom: 5px; }
+.nav-next a, .nav-previous a, .pagination a, .pagination .current { float: left; padding: 15px 15px; background: #FFF; -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); line-height: 1; font-size: 18px; text-transform: none; min-width: 48px; text-align: center; margin-bottom: 5px; }
 .nav-previous { float: left }
 .nav-next { float: right }
 .posts-navigation { clear: both; width: 100%; float: left; }
@@ -688,9 +688,13 @@ a.toplink i { line-height: 15px }
 
 .phan_trang {
 	float: right;
-	width: 650px;
+	width: 868px;
 	margin-left: 30px;
 	height: 130px;
+}
+
+.phan_trang a {
+    text-transform: none ;
 }
 
 /* Style cho ?nh */

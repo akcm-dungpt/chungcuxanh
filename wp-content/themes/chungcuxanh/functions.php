@@ -383,7 +383,10 @@ function forest_pagination() {
 	    'format' => '?paged=%#%',
 	    'current' => max( 1, get_query_var('paged') ),
 	    'total' => $wp_query->max_num_pages,
-	    'type'  => 'array'
+	    'type'  => 'array',
+	    'next_text' => 'Tiếp',
+	    'prev_text' => 'Trước',
+	    'before_page_number' => 'Trang '
 	) );
 	if( is_array($page_format) ) {
 	            $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
